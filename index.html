@@ -5,26 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="./products.json"></script>
+    <script src="./chemistry.json"></script>
 </head>
 <body>
 <ul id="ul">
 
 </ul>
-<script type="text/javascript" src="renderjson.js"></script>
+
 <script>
     const div=document.querySelector('ul');
-fetch('./products.json')
+fetch('./chemistry.json')
 .then(res=> res.json())
 .then(data=>{
-    var arr=[...data]
-    console.log(arr)
-    document.getElementById("ul").append( JSON.stringify(arr, null, 2))
+    // var arr=[...data]
+    console.log(data)
+    document.getElementById("ul").append( JSON.stringify(data, null, 2))
 
    
 })
 
+async function postData(url = '', data = {}) {
+  
+  const response = await fetch(url, {
+    method: 'POST', 
+    mode: 'cors',
+    cache: 'no-cache', 
+    credentials: 'same-origin', 
+    headers: {
+      'Content-Type': 'application/json'
+      
+    },
+    redirect: 'follow', 
+    referrerPolicy: 'no-referrer', 
+    body: JSON.stringify(data) 
+  });
+  return response.json();
+}
 
+postData(url,{})
+  .then((data) => {
+    console.log(data); 
+  });
 </script>
 </body>
 </html>
