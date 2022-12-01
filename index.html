@@ -1,0 +1,30 @@
+<html>
+<head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./products.json"></script>
+</head>
+<body>
+<ul id="ul">
+
+</ul>
+<script type="text/javascript" src="renderjson.js"></script>
+<script>
+    const div=document.querySelector('ul');
+fetch('./products.json')
+.then(res=> res.json())
+.then(data=>{
+    var arr=[...data]
+    console.log(arr)
+    document.getElementById("ul").append( JSON.stringify(arr, null, 2))
+
+   
+})
+
+
+</script>
+</body>
+</html>
